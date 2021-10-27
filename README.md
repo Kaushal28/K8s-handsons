@@ -11,4 +11,4 @@ Setup a Kubernetes cluster using `kubeadm` in local machine.
 
 - Created a YAML config file for Pod haing image `praqma/network-multitool` and network mode as `host` (so that commands can be executed against host). Then it allows to execute supported network commands from the container. (using `kubectl exec <pod-name> -it -- bin/bash`)
 - Created a Go based static file server and corresponding docker image. Pushed that image into a local docker registry. Then created a Pod with mounted directory from host where the file would be hosted. Configured liveness and readiness probes to check whether the file exists in mounted path. Configured a busybox init container to create file on pod startup in mounted path. Also created a kubernates service to access the file server from host.
-- created a daemon set with nginx container.
+- Created a daemon set with nginx container.
