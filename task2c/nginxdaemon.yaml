@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginx
+spec:
+    selector:
+      matchLabels:
+        name: nginx
+    template:
+      metadata:
+        labels:
+          name: nginx
+      spec:
+        tolerations:
+        # this toleration is to have the daemonset runnable on master nodes
+        - key: node-role.kubernetes.io/master
+          operator: Exists
+          effect: NoSchedule
+        containers:
+        - name: nginx
+          image: nginx
