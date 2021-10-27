@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: netutils
+spec:
+  hostNetwork: true
+  containers:
+  - name: netutils
+    image: praqma/network-multitool

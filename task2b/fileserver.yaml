@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fileserver
+  labels:
+    app: fileserver
+spec:
+  containers:
+  # https://github.com/kubernetes/kubernetes/issues/52345
+  - name: fileserver
+    image: localhost:5000/fserver
+    env:
+    - name: MOUNT_DIR
+      value: /root
+    volumeMounts:
+    - name: dir
+      mountPath: /root
+    readinessProbe:
+      exec:
+        command:
+        - cat
+        - /root/file.txt
+      initialDelaySeconds: 2
+      periodSeconds: 2
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /root/file.txt
+  initContainers:
+  - name: file-creator
+    image: busybox:1.33.1
+    command: ["touch", "/root/file.txt"]
+    volumeMounts:
+    - name: dir
+      mountPath: /root
+  volumes:
+  - name: dir
+    hostPath:
+      path: /home/infracloud/Desktop/shared
