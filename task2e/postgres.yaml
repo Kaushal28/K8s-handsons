@@ -28,7 +28,7 @@ spec:
     - metadata:
         name: myclass
       spec:
-        accessModes: ["ReadWriteMany"]
+        accessModes: ["ReadWriteOnce"]
         resources:
           requests:
             storage: 1Gi
