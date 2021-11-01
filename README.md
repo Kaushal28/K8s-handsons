@@ -23,4 +23,4 @@ Setup a Kubernetes cluster using `kubeadm` in local machine.
 ## Task 4
 
 - Created an nginx deployment and a cluster IP type service to expose the nginx pod then created a busybox pod and tried accessing the nginx using cluster IP as well as service name and it returned correct response.
-- 
+- Created nginx deployment and a service to expose it. Created two namespaces and tried accessing nginx from same and other namespaces and it worked. Created a network policy to restrict traffic from all other namespaces and then tried accessing it from both namespaces and was not able to access from other namespace.
