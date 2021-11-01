@@ -19,3 +19,8 @@ Setup a Kubernetes cluster using `kubeadm` in local machine.
 ## Task 3
 
 - When changing the label of one of the pods of replicaset (managed by deployment) will make replicaset believe that the current state of cluster is not same as desired state because the desired state is determined by pod's label using label selector. So it'll spin up a new pod with the old label to match the current state with desired state.
+
+## Task 4
+
+- Created an nginx deployment and a cluster IP type service to expose the nginx pod then created a busybox pod and tried accessing the nginx using cluster IP as well as service name and it returned correct response.
+- 
