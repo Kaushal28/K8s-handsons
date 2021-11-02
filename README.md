@@ -29,3 +29,4 @@ Setup a Kubernetes cluster using `kubeadm` in local machine.
 
 - Created a config map with key-value pair and an nginx pod with env variable's value that is referenced from config map. From nginx pod, tried printing the environment variable using `echo $envname` and it printed the correct value.
 - Created an opaque secret and provided base64 encoded secret values. In the pod definition, using `envFrom`, referenced the secret and then from inside the container, echoed both the env variables and got them as base64 decoded values.
+- Created secret using `--from-literal` and via files. Values are required to be base64 encoded while creating using file but when using `--from-literal`, values can be plain text and k8s will encode it automatically.
