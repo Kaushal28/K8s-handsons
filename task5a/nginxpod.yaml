@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    env:
+    - name: envname
+      valueFrom:
+        configMapKeyRef:
+          name: cm-one
+          key: name

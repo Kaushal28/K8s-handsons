@@ -23,4 +23,9 @@ Setup a Kubernetes cluster using `kubeadm` in local machine.
 ## Task 4
 
 - Created an nginx deployment and a cluster IP type service to expose the nginx pod then created a busybox pod and tried accessing the nginx using cluster IP as well as service name and it returned correct response.
-- Created nginx deployment and a service to expose it. Created two namespaces and tried accessing nginx from same and other namespaces and it worked. Created a network policy to restrict traffic from all other namespaces and then tried accessing it from both namespaces and was not able to access from other namespace.
+- Created nginx deployment and a corresponding service to expose it on port 80. Created two namespaces and tried accessing nginx from both the namespaces and it nginx was accessible via cluster IP from both the namespaces. Then created a network policy on nginx pod to restrict traffic from all other namespaces and then tried accessing it from both the namespaces and was not able to access it from other namespace as expected.
+
+## Task 5
+
+- Created a config map with key-value pair and an nginx pod with env variable's value that is referenced from config map. From nginx pod, tried printing the environment variable using `echo $envname` and it printed the correct value.
+- 
