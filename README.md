@@ -30,3 +30,9 @@ Setup a Kubernetes cluster using `kubeadm` in local machine.
 - Created a config map with key-value pair and an nginx pod with env variable's value that is referenced from config map. From nginx pod, tried printing the environment variable using `echo $envname` and it printed the correct value.
 - Created an opaque secret and provided base64 encoded secret values. In the pod definition, using `envFrom`, referenced the secret and then from inside the container, echoed both the env variables and got them as base64 decoded values.
 - Created secret using `--from-literal` and via files. Values are required to be base64 encoded while creating using file but when using `--from-literal`, values can be plain text and k8s will encode it automatically.
+
+## Task 6
+
+- Went through official K8s docs as well as kode kloud video for dynamic volume provisioning.
+- Created two containers in a single pod and mounted emptydir type volume in both the containers. One container wrote date in mounted volume and then from inside the other container, checked the value of date written by the first container.
+- Created the same configuration in task2b. Drawbacks of hostPath as volume is that in multinode cluster, pods access the same path on all the nodes and will expect to have the same data on all the nodes. It's not possible as they are on different machines. Also, there are security risks as well where a container can access secure details and can attack other parts of the cluster.
