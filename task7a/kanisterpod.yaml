@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kanister
+  namespace: default
+spec:
+  containers:
+  - name: kanister
+    image: kanisterio/kanister-kubectl:1.18
+  serviceAccountName: podlist

@@ -36,3 +36,15 @@ Setup a Kubernetes cluster using `kubeadm` in local machine.
 - Went through official K8s docs as well as kode kloud video for dynamic volume provisioning.
 - Created two containers in a single pod and mounted emptydir type volume in both the containers. One container wrote date in mounted volume and then from inside the other container, checked the value of date written by the first container.
 - Created the same configuration in task2b. Drawbacks of hostPath as volume is that in multinode cluster, pods access the same path on all the nodes and will expect to have the same data on all the nodes. It's not possible as they are on different machines. Also, there are security risks as well where a container can access secure details and can attack other parts of the cluster.
+
+## task 7
+
+- Created a service account, kanister pod, a cluster role for listing pods and role binding with service account in default namespace and then from kanister pod, made a REST API call to kube API server using the following commands and it listed the pods from kube-system namespace:
+    ```bash
+    KUBE_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+    curl -sSk -H "Authorization: Bearer $KUBE_TOKEN" \
+      https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT/api/v1/namespaces/kube-system/pods
+
+    ```
+- `--authorization-mode` flag sets the authorization mechanism for k8s cluster.
+- In each namespace, a service account is created by default with the name `default` and it will be mounted as a volume in all the pods in that namespace.
