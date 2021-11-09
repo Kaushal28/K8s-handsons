@@ -39,7 +39,7 @@ Setup a Kubernetes cluster using `kubeadm` in local machine.
 
 ## task 7
 
-- Created a service account, kanister pod, a cluster role for listing pods and role binding with service account in default namespace and then from kanister pod, made a REST API call to kube API server using the following commands and it listed the pods from kube-system namespace:
+- Created a service account, kanister pod, a cluster role for listing pods and role binding with service account in default namespace and then from kanister pod, made a REST API call to kube API server using the following commands and it listed the pods from kube-system namespace (https://stackoverflow.com/a/30739416/5353128):
     ```bash
     KUBE_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
     curl -sSk -H "Authorization: Bearer $KUBE_TOKEN" \
@@ -48,3 +48,8 @@ Setup a Kubernetes cluster using `kubeadm` in local machine.
     ```
 - `--authorization-mode` flag sets the authorization mechanism for k8s cluster.
 - In each namespace, a service account is created by default with the name `default` and it will be mounted as a volume in all the pods in that namespace.
+
+
+## task 8
+
+- Created required components to deploy library application on K8s. After deployment, tested it via making REST API calls to available endpoints in the application.
